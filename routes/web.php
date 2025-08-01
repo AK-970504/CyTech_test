@@ -13,7 +13,7 @@ Route::middleware(['web'])->group(function() {
 
 	//[http://localhost:301/user_login]にアクセスしたら
 	//[UserController.php/user_login]を引用]
-	Route::get('/user_login', [UserController::class, 'user_login_02'])->name('login');;
+	Route::get('/user_login', [UserController::class, 'user_login_02'])->name('user_login_02');;
 
 	//[http://localhost:301/user_login]でログインを実行を行った場合
 	Route::Post('/user_login', [UserController::class, 'user_login_03'])->name('user_login_03');
