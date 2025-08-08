@@ -1,0 +1,344 @@
+16:29:46  [main] 	Initializing Control Panel
+16:29:46  [main] 	Windows Version:  Home  64-bit
+16:29:46  [main] 	XAMPP Version: 8.2.12
+16:29:46  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+16:29:46  [main] 	Running with Administrator rights - good!
+16:29:46  [main] 	XAMPP Installation Directory: "c:\xampp\"
+16:29:46  [main] 	Checking for prerequisites
+16:29:48  [main] 	All prerequisites found
+16:29:48  [main] 	Initializing Modules
+16:29:48  [Apache] 	XAMPP Apache is already running on port 80
+16:29:48  [Apache] 	XAMPP Apache is already running on port 443
+16:29:48  [mysql] 	XAMPP MySQL is already running on port 3306
+16:29:48  [main] 	Starting Check-Timer
+16:29:48  [main] 	Control Panel Ready
+16:35:01  [Apache] 	Status change detected: stopped
+16:35:01  [Apache] 	Error: Apache shutdown unexpectedly.
+16:35:01  [Apache] 	This may be due to a blocked port, missing dependencies, 
+16:35:01  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+16:35:01  [Apache] 	Press the Logs button to view error logs and check
+16:35:01  [Apache] 	the Windows Event Viewer for more clues
+16:35:01  [Apache] 	If you need more help, copy and post this
+16:35:01  [Apache] 	entire log window on the forums
+16:35:02  [mysql] 	Status change detected: stopped
+16:35:02  [mysql] 	Error: MySQL shutdown unexpectedly.
+16:35:02  [mysql] 	This may be due to a blocked port, missing dependencies, 
+16:35:02  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+16:35:02  [mysql] 	Press the Logs button to view error logs and check
+16:35:02  [mysql] 	the Windows Event Viewer for more clues
+16:35:02  [mysql] 	If you need more help, copy and post this
+16:35:02  [mysql] 	entire log window on the forums
+16:35:03  [Apache] 	Status change detected: running
+16:35:09  [mysql] 	Status change detected: running
+17:44:04  [main] 	Deinitializing Modules
+17:44:05  [main] 	Deinitializing Control Panel
+
+3:47:04  [main] 	Initializing Control Panel
+3:47:04  [main] 	Windows Version:  Home  64-bit
+3:47:04  [main] 	XAMPP Version: 8.2.12
+3:47:04  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+3:47:04  [main] 	You are not running with administrator rights! This will work for
+3:47:04  [main] 	most application stuff but whenever you do something with services
+3:47:04  [main] 	there will be a security dialogue or things will break! So think 
+3:47:04  [main] 	about running this application with administrator rights!
+3:47:04  [main] 	XAMPP Installation Directory: "c:\xampp\"
+3:47:04  [main] 	Checking for prerequisites
+3:47:07  [main] 	All prerequisites found
+3:47:07  [main] 	Initializing Modules
+3:47:07  [main] 	Starting Check-Timer
+3:47:07  [main] 	Control Panel Ready
+16:18:05  [Apache] 	Attempting to start Apache app...
+16:18:05  [Apache] 	Status change detected: running
+16:18:07  [mysql] 	Attempting to start MySQL app...
+16:18:09  [mysql] 	Status change detected: running
+16:35:01  [Apache] 	Status change detected: stopped
+16:35:01  [Apache] 	Error: Apache shutdown unexpectedly.
+16:35:01  [Apache] 	This may be due to a blocked port, missing dependencies, 
+16:35:01  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+16:35:01  [Apache] 	Press the Logs button to view error logs and check
+16:35:01  [Apache] 	the Windows Event Viewer for more clues
+16:35:01  [Apache] 	If you need more help, copy and post this
+16:35:01  [Apache] 	entire log window on the forums
+16:35:02  [mysql] 	Status change detected: stopped
+16:35:02  [mysql] 	Error: MySQL shutdown unexpectedly.
+16:35:02  [mysql] 	This may be due to a blocked port, missing dependencies, 
+16:35:02  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+16:35:02  [mysql] 	Press the Logs button to view error logs and check
+16:35:02  [mysql] 	the Windows Event Viewer for more clues
+16:35:02  [mysql] 	If you need more help, copy and post this
+16:35:02  [mysql] 	entire log window on the forums
+16:35:03  [Apache] 	Status change detected: running
+16:35:09  [mysql] 	Status change detected: running
+17:44:04  [main] 	Deinitializing Modules
+17:44:05  [main] 	Deinitializing Control Panel
+
+0:08:15  [main] 	Initializing Control Panel
+0:08:15  [main] 	Windows Version:  Home  64-bit
+0:08:15  [main] 	XAMPP Version: 8.2.12
+0:08:15  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+0:08:15  [main] 	You are not running with administrator rights! This will work for
+0:08:15  [main] 	most application stuff but whenever you do something with services
+0:08:15  [main] 	there will be a security dialogue or things will break! So think 
+0:08:15  [main] 	about running this application with administrator rights!
+0:08:15  [main] 	XAMPP Installation Directory: "c:\xampp\"
+0:08:15  [main] 	Checking for prerequisites
+0:08:19  [main] 	All prerequisites found
+0:08:19  [main] 	Initializing Modules
+0:08:19  [Apache] 	XAMPP Apache is already running on port 301
+0:08:19  [Apache] 	XAMPP Apache is already running on port 443
+0:08:19  [mysql] 	XAMPP MySQL is already running on port 3306
+0:08:19  [main] 	Starting Check-Timer
+0:08:19  [main] 	Control Panel Ready
+19:50:04  [Apache] 	Status change detected: stopped
+19:50:04  [Apache] 	Error: Apache shutdown unexpectedly.
+19:50:04  [Apache] 	This may be due to a blocked port, missing dependencies, 
+19:50:04  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+19:50:04  [Apache] 	Press the Logs button to view error logs and check
+19:50:04  [Apache] 	the Windows Event Viewer for more clues
+19:50:04  [Apache] 	If you need more help, copy and post this
+19:50:04  [Apache] 	entire log window on the forums
+19:50:05  [Apache] 	Status change detected: running
+3:37:53  [Apache] 	Status change detected: stopped
+3:37:53  [Apache] 	Error: Apache shutdown unexpectedly.
+3:37:53  [Apache] 	This may be due to a blocked port, missing dependencies, 
+3:37:53  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+3:37:53  [Apache] 	Press the Logs button to view error logs and check
+3:37:53  [Apache] 	the Windows Event Viewer for more clues
+3:37:53  [Apache] 	If you need more help, copy and post this
+3:37:53  [Apache] 	entire log window on the forums
+3:37:55  [Apache] 	Status change detected: running
+4:44:46  [Apache] 	Status change detected: stopped
+4:44:46  [Apache] 	Error: Apache shutdown unexpectedly.
+4:44:46  [Apache] 	This may be due to a blocked port, missing dependencies, 
+4:44:46  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+4:44:46  [Apache] 	Press the Logs button to view error logs and check
+4:44:46  [Apache] 	the Windows Event Viewer for more clues
+4:44:46  [Apache] 	If you need more help, copy and post this
+4:44:46  [Apache] 	entire log window on the forums
+4:44:48  [Apache] 	Status change detected: running
+4:45:41  [Apache] 	Status change detected: stopped
+4:45:41  [Apache] 	Error: Apache shutdown unexpectedly.
+4:45:41  [Apache] 	This may be due to a blocked port, missing dependencies, 
+4:45:41  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+4:45:41  [Apache] 	Press the Logs button to view error logs and check
+4:45:41  [Apache] 	the Windows Event Viewer for more clues
+4:45:41  [Apache] 	If you need more help, copy and post this
+4:45:41  [Apache] 	entire log window on the forums
+4:45:42  [Apache] 	Status change detected: running
+8:23:13  [Apache] 	Status change detected: stopped
+8:23:13  [Apache] 	Error: Apache shutdown unexpectedly.
+8:23:13  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:23:13  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:23:13  [Apache] 	Press the Logs button to view error logs and check
+8:23:13  [Apache] 	the Windows Event Viewer for more clues
+8:23:13  [Apache] 	If you need more help, copy and post this
+8:23:13  [Apache] 	entire log window on the forums
+8:23:15  [Apache] 	Status change detected: running
+8:26:09  [Apache] 	Status change detected: stopped
+8:26:09  [Apache] 	Error: Apache shutdown unexpectedly.
+8:26:09  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:26:09  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:26:09  [Apache] 	Press the Logs button to view error logs and check
+8:26:09  [Apache] 	the Windows Event Viewer for more clues
+8:26:09  [Apache] 	If you need more help, copy and post this
+8:26:09  [Apache] 	entire log window on the forums
+8:26:11  [Apache] 	Status change detected: running
+8:33:43  [Apache] 	Status change detected: stopped
+8:33:43  [Apache] 	Error: Apache shutdown unexpectedly.
+8:33:43  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:33:43  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:33:43  [Apache] 	Press the Logs button to view error logs and check
+8:33:43  [Apache] 	the Windows Event Viewer for more clues
+8:33:43  [Apache] 	If you need more help, copy and post this
+8:33:43  [Apache] 	entire log window on the forums
+8:33:44  [Apache] 	Status change detected: running
+8:34:40  [Apache] 	Status change detected: stopped
+8:34:40  [Apache] 	Error: Apache shutdown unexpectedly.
+8:34:40  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:34:40  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:34:40  [Apache] 	Press the Logs button to view error logs and check
+8:34:40  [Apache] 	the Windows Event Viewer for more clues
+8:34:40  [Apache] 	If you need more help, copy and post this
+8:34:40  [Apache] 	entire log window on the forums
+8:34:42  [Apache] 	Status change detected: running
+8:36:15  [Apache] 	Status change detected: stopped
+8:36:15  [Apache] 	Error: Apache shutdown unexpectedly.
+8:36:15  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:36:15  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:36:15  [Apache] 	Press the Logs button to view error logs and check
+8:36:15  [Apache] 	the Windows Event Viewer for more clues
+8:36:15  [Apache] 	If you need more help, copy and post this
+8:36:15  [Apache] 	entire log window on the forums
+8:36:18  [Apache] 	Status change detected: running
+8:37:14  [Apache] 	Status change detected: stopped
+8:37:14  [Apache] 	Error: Apache shutdown unexpectedly.
+8:37:14  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:37:14  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:37:14  [Apache] 	Press the Logs button to view error logs and check
+8:37:14  [Apache] 	the Windows Event Viewer for more clues
+8:37:14  [Apache] 	If you need more help, copy and post this
+8:37:14  [Apache] 	entire log window on the forums
+8:37:16  [Apache] 	Status change detected: running
+8:38:48  [Apache] 	Status change detected: stopped
+8:38:48  [Apache] 	Error: Apache shutdown unexpectedly.
+8:38:48  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:38:48  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:38:48  [Apache] 	Press the Logs button to view error logs and check
+8:38:48  [Apache] 	the Windows Event Viewer for more clues
+8:38:48  [Apache] 	If you need more help, copy and post this
+8:38:48  [Apache] 	entire log window on the forums
+8:38:50  [Apache] 	Status change detected: running
+8:42:30  [Apache] 	Status change detected: stopped
+8:42:30  [Apache] 	Error: Apache shutdown unexpectedly.
+8:42:30  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:42:30  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:42:30  [Apache] 	Press the Logs button to view error logs and check
+8:42:30  [Apache] 	the Windows Event Viewer for more clues
+8:42:30  [Apache] 	If you need more help, copy and post this
+8:42:30  [Apache] 	entire log window on the forums
+8:42:33  [Apache] 	Status change detected: running
+8:59:06  [Apache] 	Status change detected: stopped
+8:59:06  [Apache] 	Error: Apache shutdown unexpectedly.
+8:59:06  [Apache] 	This may be due to a blocked port, missing dependencies, 
+8:59:06  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+8:59:06  [Apache] 	Press the Logs button to view error logs and check
+8:59:06  [Apache] 	the Windows Event Viewer for more clues
+8:59:06  [Apache] 	If you need more help, copy and post this
+8:59:06  [Apache] 	entire log window on the forums
+8:59:07  [Apache] 	Status change detected: running
+9:01:49  [Apache] 	Status change detected: stopped
+9:01:49  [Apache] 	Error: Apache shutdown unexpectedly.
+9:01:49  [Apache] 	This may be due to a blocked port, missing dependencies, 
+9:01:49  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+9:01:49  [Apache] 	Press the Logs button to view error logs and check
+9:01:49  [Apache] 	the Windows Event Viewer for more clues
+9:01:49  [Apache] 	If you need more help, copy and post this
+9:01:49  [Apache] 	entire log window on the forums
+9:01:51  [Apache] 	Status change detected: running
+22:04:05  [Apache] 	Status change detected: stopped
+22:04:05  [Apache] 	Error: Apache shutdown unexpectedly.
+22:04:05  [Apache] 	This may be due to a blocked port, missing dependencies, 
+22:04:05  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+22:04:05  [Apache] 	Press the Logs button to view error logs and check
+22:04:05  [Apache] 	the Windows Event Viewer for more clues
+22:04:05  [Apache] 	If you need more help, copy and post this
+22:04:05  [Apache] 	entire log window on the forums
+22:04:06  [Apache] 	Status change detected: running
+2:00:37  [Apache] 	Status change detected: stopped
+2:00:37  [Apache] 	Error: Apache shutdown unexpectedly.
+2:00:37  [Apache] 	This may be due to a blocked port, missing dependencies, 
+2:00:37  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+2:00:37  [Apache] 	Press the Logs button to view error logs and check
+2:00:37  [Apache] 	the Windows Event Viewer for more clues
+2:00:37  [Apache] 	If you need more help, copy and post this
+2:00:37  [Apache] 	entire log window on the forums
+2:00:39  [Apache] 	Status change detected: running
+2:07:11  [Apache] 	Status change detected: stopped
+2:07:11  [Apache] 	Error: Apache shutdown unexpectedly.
+2:07:11  [Apache] 	This may be due to a blocked port, missing dependencies, 
+2:07:11  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+2:07:11  [Apache] 	Press the Logs button to view error logs and check
+2:07:11  [Apache] 	the Windows Event Viewer for more clues
+2:07:11  [Apache] 	If you need more help, copy and post this
+2:07:11  [Apache] 	entire log window on the forums
+2:07:12  [Apache] 	Status change detected: running
+20:19:48  [Apache] 	Status change detected: stopped
+20:19:48  [Apache] 	Error: Apache shutdown unexpectedly.
+20:19:48  [Apache] 	This may be due to a blocked port, missing dependencies, 
+20:19:48  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+20:19:48  [Apache] 	Press the Logs button to view error logs and check
+20:19:48  [Apache] 	the Windows Event Viewer for more clues
+20:19:48  [Apache] 	If you need more help, copy and post this
+20:19:48  [Apache] 	entire log window on the forums
+20:19:50  [Apache] 	Status change detected: running
+20:20:37  [Apache] 	Status change detected: stopped
+20:20:37  [Apache] 	Error: Apache shutdown unexpectedly.
+20:20:37  [Apache] 	This may be due to a blocked port, missing dependencies, 
+20:20:37  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+20:20:37  [Apache] 	Press the Logs button to view error logs and check
+20:20:37  [Apache] 	the Windows Event Viewer for more clues
+20:20:37  [Apache] 	If you need more help, copy and post this
+20:20:37  [Apache] 	entire log window on the forums
+20:20:39  [Apache] 	Status change detected: running
+20:22:12  [Apache] 	Status change detected: stopped
+20:22:12  [Apache] 	Error: Apache shutdown unexpectedly.
+20:22:12  [Apache] 	This may be due to a blocked port, missing dependencies, 
+20:22:12  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+20:22:12  [Apache] 	Press the Logs button to view error logs and check
+20:22:12  [Apache] 	the Windows Event Viewer for more clues
+20:22:12  [Apache] 	If you need more help, copy and post this
+20:22:12  [Apache] 	entire log window on the forums
+20:22:14  [Apache] 	Status change detected: running
+20:39:18  [Apache] 	Status change detected: stopped
+20:39:18  [Apache] 	Error: Apache shutdown unexpectedly.
+20:39:18  [Apache] 	This may be due to a blocked port, missing dependencies, 
+20:39:18  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+20:39:18  [Apache] 	Press the Logs button to view error logs and check
+20:39:18  [Apache] 	the Windows Event Viewer for more clues
+20:39:18  [Apache] 	If you need more help, copy and post this
+20:39:18  [Apache] 	entire log window on the forums
+20:39:20  [Apache] 	Status change detected: running
+22:10:38  [Apache] 	Status change detected: stopped
+22:10:38  [Apache] 	Error: Apache shutdown unexpectedly.
+22:10:38  [Apache] 	This may be due to a blocked port, missing dependencies, 
+22:10:38  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+22:10:38  [Apache] 	Press the Logs button to view error logs and check
+22:10:38  [Apache] 	the Windows Event Viewer for more clues
+22:10:38  [Apache] 	If you need more help, copy and post this
+22:10:38  [Apache] 	entire log window on the forums
+22:10:40  [Apache] 	Status change detected: running
+22:17:22  [Apache] 	Status change detected: stopped
+22:17:22  [Apache] 	Error: Apache shutdown unexpectedly.
+22:17:23  [Apache] 	This may be due to a blocked port, missing dependencies, 
+22:17:23  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+22:17:23  [Apache] 	Press the Logs button to view error logs and check
+22:17:23  [Apache] 	the Windows Event Viewer for more clues
+22:17:23  [Apache] 	If you need more help, copy and post this
+22:17:23  [Apache] 	entire log window on the forums
+22:17:25  [Apache] 	Status change detected: running
+22:17:48  [Apache] 	Status change detected: stopped
+22:17:48  [Apache] 	Error: Apache shutdown unexpectedly.
+22:17:48  [Apache] 	This may be due to a blocked port, missing dependencies, 
+22:17:48  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+22:17:48  [Apache] 	Press the Logs button to view error logs and check
+22:17:48  [Apache] 	the Windows Event Viewer for more clues
+22:17:48  [Apache] 	If you need more help, copy and post this
+22:17:48  [Apache] 	entire log window on the forums
+22:17:50  [Apache] 	Status change detected: running
+22:20:08  [Apache] 	Status change detected: stopped
+22:20:08  [Apache] 	Error: Apache shutdown unexpectedly.
+22:20:08  [Apache] 	This may be due to a blocked port, missing dependencies, 
+22:20:08  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+22:20:08  [Apache] 	Press the Logs button to view error logs and check
+22:20:08  [Apache] 	the Windows Event Viewer for more clues
+22:20:08  [Apache] 	If you need more help, copy and post this
+22:20:08  [Apache] 	entire log window on the forums
+22:20:11  [Apache] 	Status change detected: running
+0:24:03  [Apache] 	Status change detected: stopped
+0:24:03  [Apache] 	Error: Apache shutdown unexpectedly.
+0:24:03  [Apache] 	This may be due to a blocked port, missing dependencies, 
+0:24:03  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+0:24:03  [Apache] 	Press the Logs button to view error logs and check
+0:24:03  [Apache] 	the Windows Event Viewer for more clues
+0:24:03  [Apache] 	If you need more help, copy and post this
+0:24:03  [Apache] 	entire log window on the forums
+0:24:05  [Apache] 	Status change detected: running
+1:08:25  [Apache] 	Status change detected: stopped
+1:08:25  [Apache] 	Error: Apache shutdown unexpectedly.
+1:08:25  [Apache] 	This may be due to a blocked port, missing dependencies, 
+1:08:25  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+1:08:25  [Apache] 	Press the Logs button to view error logs and check
+1:08:25  [Apache] 	the Windows Event Viewer for more clues
+1:08:25  [Apache] 	If you need more help, copy and post this
+1:08:25  [Apache] 	entire log window on the forums
+1:08:25  [mysql] 	Status change detected: stopped
+1:08:25  [mysql] 	Error: MySQL shutdown unexpectedly.
+1:08:25  [mysql] 	This may be due to a blocked port, missing dependencies, 
+1:08:25  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+1:08:25  [mysql] 	Press the Logs button to view error logs and check
+1:08:25  [mysql] 	the Windows Event Viewer for more clues
+1:08:25  [mysql] 	If you need more help, copy and post this
+1:08:25  [mysql] 	entire log window on the forums
+1:08:25  [main] 	Deinitializing Modules
+1:08:25  [main] 	Deinitializing Control Panel
+
