@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,7 +192,7 @@
 				const form = e.target;
 				const formData = new FormData(form);
 				const params = new URLSearchParams(formData).toString();
-				fetch("<?php echo e(route('product_list_01')); ?>?" + params, {
+				fetch("{{ route('product_list_01') }}?" + params, {
 					headers: { 'X-Requested-With': 'XMLHttpRequest' }
 				})
 				.then(response => response.text())
@@ -210,7 +210,7 @@
 						fetch(`/product/${id}/delete`, {
 							method: 'DELETE',
 							headers: {
-								'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>',
+								'X-CSRF-TOKEN': '{{ csrf_token() }}',
 								'X-Requested-With': 'XMLHttpRequest'
 							}
 						})
@@ -240,17 +240,16 @@
 			</h2>
 			<div class="text">
 				<form id="searchForm">
-					<input type="text" name="keyword" autocomplete="off" placeholder="検索キーワード" value="<?php echo e($request->keyword ?? ''); ?>">
+					<input type="text" name="keyword" autocomplete="off" placeholder="検索キーワード" value="{{ $request->keyword ?? '' }}">
 					<select name="company_id">
-						<option id="maker_select" value="" disabled hidden <?php echo e(old('company_id') === null ? 'selected' : ''); ?>>
+						<option id="maker_select" value="" disabled hidden {{ old('company_id') === null ? 'selected' : '' }}>
 							メーカー名
 						</option>
-						<?php $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<option value="<?php echo e($company->id); ?>" <?php echo e(old('company_id') == $company->id ? 'selected' : ''); ?>>
-								<?php echo e($company->company_name); ?>
-
+						@foreach ($companies as $company)
+							<option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+								{{ $company->company_name }}
 							</option>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						@endforeach
 					</select>
 					<button class=seach_btn>
 						検索
@@ -262,11 +261,11 @@
 					<thead>
 						<tr>
 							<th class="title_id">
-								<a href="<?php echo e(route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'id_asc' ? 'id_desc' : 'id_asc']))); ?>">
+								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'id_asc' ? 'id_desc' : 'id_asc'])) }}">
 									ID
-									<?php if(request('sort') === 'id_asc'): ?>▲
-									<?php elseif(request('sort') === 'id_desc'): ?>▼
-									<?php endif; ?>
+									@if(request('sort') === 'id_asc')▲
+									@elseif(request('sort') === 'id_desc')▼
+									@endif
 								</a>
 							</th>
 							<th class="title_picture">
@@ -276,33 +275,33 @@
 								商品名
 							</th>
 							<th class="title_price">
-								<a href="<?php echo e(route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'price_asc' ? 'price_desc' : 'price_asc']))); ?>">
+								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'price_asc' ? 'price_desc' : 'price_asc'])) }}">
 									価格
-									<?php if(request('sort') === 'price_asc'): ?>▲
-									<?php elseif(request('sort') === 'price_desc'): ?>▼
-									<?php endif; ?>
+									@if(request('sort') === 'price_asc')▲
+									@elseif(request('sort') === 'price_desc')▼
+									@endif
 								</a>
 							</th>
 							<th class="title_stock">
-								<a href="<?php echo e(route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'stock_asc' ? 'stock_desc' : 'stock_asc']))); ?>">
+								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'stock_asc' ? 'stock_desc' : 'stock_asc'])) }}">
 									在庫数
-									<?php if(request('sort') === 'stock_asc'): ?>▲
-									<?php elseif(request('sort') === 'stock_desc'): ?>▼
-									<?php endif; ?>
+									@if(request('sort') === 'stock_asc')▲
+									@elseif(request('sort') === 'stock_desc')▼
+									@endif
 								</a>
 							</th>
 							<th class="title_company_id">
 								メーカー名
 							</th>
 							<th class="title_create">
-								<button class="create_btn" onclick="location.href='<?php echo e(route('product_new_registration_01')); ?>'">
+								<button class="create_btn" onclick="location.href='{{ route('product_new_registration_01') }}'">
 									新規作成
 								</button>
 							</th>
 						</tr>
 					</thead>
 					<tbody id="productTableBody">
-						<?php echo $__env->make('03-99_product_list_items', ['products' => $products], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+						@include('03-99_product_list_items', ['products' => $products])
 					</tbody>
 				</table>
 				<div class="pagination">
@@ -323,4 +322,3 @@
 		</div>
 	</body>
 </html>
-<?php /**PATH C:\xampp\htdocs\CyTech_test\resources\views/03_product_list.blade.php ENDPATH**/ ?>
