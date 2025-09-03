@@ -18,19 +18,14 @@ class ProductController extends Controller {
 		//キーワード検索(商品名)
 		if ($request->filled('keyword')) {
 			$keyword = $request->input('keyword');
-			//[価格]でソート
-			if ($keyword === '価格') {
-				$query->orderBy('price', 'asc');//昇順(安い順)
-			} elseif ($keyword === '在庫' || $keyword === '在庫数') {
-				$query->orderBy('stock', 'asc');//昇順(安い順)
-			} else {
-				$query->where(function ($q) use ($keyword) {
-					$q->where('product_name', 'like', '%' . $keyword . '%')->orWhere('price', 'like', '%' . $keyword . '%')->orWhere('stock', 'like', '%' . $keyword . '%');
-				});
-			}
+			$query->where(function ($q) use ($keyword) {
+				$q->where('product_name', 'like', '%' . $keyword . '%')
+				  ->orWhere('price', 'like', '%' . $keyword . '%')
+				  ->orWhere('stock', 'like', '%' . $keyword . '%');
+			});
 		}
 		//⬆⬇ソート機能
-		$sort = $request->input('sort');
+		$sort = $request->input('sort', null);
 		switch ($sort) {
 			case 'id_asc':
 				$query->orderBy('id', 'asc');
@@ -55,7 +50,7 @@ class ProductController extends Controller {
 				break;
 		}
 		//商品を取得(新しい順)して最大20件に調整（空行含めるために必要な数を追加
-		$products = $query->orderBy('id', 'asc')->take(20)->get();
+		$products = $query->take(20)->get();
 		//空の行を追加(20件未満だったら)
 		$emptyCount = 20 - $products->count();
 		for ($i =0; $i <$emptyCount; $i++) {
@@ -63,25 +58,14 @@ class ProductController extends Controller {
 		}
 		//メーカー一覧取得
 		$companies = company::all();
-		//ビューを渡す
-		return view('03_product_list', [
-			'products' => $products,
-			'companies' => $companies,
-			'request' => $request,
-		]);
-		// product_list_01()
 		if ($request->ajax()) {
-			//Ajaxリクエストならtbody部分ビューだけ返す
 			return view('03-99_product_list_items', [
-				'products' => $products
+				'products' => $products,
+				'sort' => $sort,
 			]);
+		} else {
+			return view('03_product_list', compact('products', 'companies', 'request', 'sort'));
 		}
-		//旧：同期リクエスト用
-		return view('product_list', [
-			'products' => $products,
-			'companies' => $companies,
-			'request' => $request,
-		]);
 	}
 
 	//[http://localhost:301/product_new_registration]にアクセスした場合

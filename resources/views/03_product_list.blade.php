@@ -13,9 +13,6 @@
 				justify-content: center;
 				height: 100vh;
 				margin: 0 auto;
-				user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
 			}
 			li {
 				list-style: none;
@@ -23,14 +20,9 @@
 			a {
 				color: initial;
 				text-decoration: none;
-				user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
 			}
 			h2 {
 				user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
 			}
 			.main h2 {
 				text-align: left;
@@ -79,10 +71,7 @@
 			}
 			th, td {
 				padding: 10px;
-				text-align: center;
-				user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
+				text-align: center
 			}
 			.id {
 				width: 5ch;
@@ -178,60 +167,6 @@
 				font-weight: bold;
 			}
 		</style>
-		<script>
-			function showSampleImage(event, imagePath) {
-				event.preventDefault();
-				const popupWidth = screen.availWidth;
-				const popupHeight = screen.availHeight;
-				const left = 0;
-				const top = 0;
-				window.open(imagePath, '画像表示', `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes`);
-			}
-			document.getElementById('searchForm').addEventListener('submit', function(e) {
-				e.preventDefault();
-				const form = e.target;
-				const formData = new FormData(form);
-				const params = new URLSearchParams(formData).toString();
-				fetch("{{ route('product_list_01') }}?" + params, {
-					headers: { 'X-Requested-With': 'XMLHttpRequest' }
-				})
-				.then(response => response.text())
-				.then(html => {
-					document.getElementById('productTableBody').innerHTML = html;
-				})
-				.catch(err => console.error(err));
-			})
-			document.addEventListener('DOMContentLoaded', function() {
-				const tableBody = document.getElementById('productTableBody');
-				tableBody.addEventListener('click', function(e) {
-					if (e.target.classList.contains('delete_btn')) {
-						const id = e.target.dataset.id;
-						if (!confirm('本当に削除しますか？')) return;
-						fetch(`/product/${id}/delete`, {
-							method: 'DELETE',
-							headers: {
-								'X-CSRF-TOKEN': '{{ csrf_token() }}',
-								'X-Requested-With': 'XMLHttpRequest'
-							}
-						})
-						.then(response => response.json())
-						.then(data => {
-							if (data.status === 'success') {
-								const row = e.target.closest('tr');
-								row.remove();
-								alert(data.message);
-							} else {
-								alert(data.message || '削除に失敗しました');
-							}
-						})
-						.catch(err => {
-							console.error(err);
-							alert('削除中にエラーが発生しました');
-						});
-					}
-				});
-			});
-		</script>
 	</head>
 	<body>
 		<div class="main">
@@ -256,69 +191,116 @@
 					</button>
 				</form>
 			</div>
-			<div class="table">
-				<table>
-					<thead>
-						<tr>
-							<th class="title_id">
-								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'id_asc' ? 'id_desc' : 'id_asc'])) }}">
-									ID
-									@if(request('sort') === 'id_asc')▲
-									@elseif(request('sort') === 'id_desc')▼
-									@endif
-								</a>
-							</th>
-							<th class="title_picture">
-								商品画像
-							</th>
-							<th class="title_product_name">
-								商品名
-							</th>
-							<th class="title_price">
-								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'price_asc' ? 'price_desc' : 'price_asc'])) }}">
-									価格
-									@if(request('sort') === 'price_asc')▲
-									@elseif(request('sort') === 'price_desc')▼
-									@endif
-								</a>
-							</th>
-							<th class="title_stock">
-								<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => request('sort') === 'stock_asc' ? 'stock_desc' : 'stock_asc'])) }}">
-									在庫数
-									@if(request('sort') === 'stock_asc')▲
-									@elseif(request('sort') === 'stock_desc')▼
-									@endif
-								</a>
-							</th>
-							<th class="title_company_id">
-								メーカー名
-							</th>
-							<th class="title_create">
-								<button class="create_btn" onclick="location.href='{{ route('product_new_registration_01') }}'">
-									新規作成
-								</button>
-							</th>
-						</tr>
-					</thead>
-					<tbody id="productTableBody">
-						@include('03-99_product_list_items', ['products' => $products])
-					</tbody>
-				</table>
-				<div class="pagination">
-					<button>
-						&lt;
-					</button>
-					<button class="active">
-						1
-					</button>
-					<button>
-						2
-					</button>
-					<button>
-						&gt;
-					</button>
-				</div>
+			<div class="table" id="productTableContainer">
+				 @include('03-99_product_list_items', ['products' => $products])
+			</div>
+			<div class="pagination">
+				<button>
+					&lt;
+				</button>
+				<button class="active">
+					1
+				</button>
+				<button>
+					2
+				</button>
+				<button>
+					&gt;
+				</button>
 			</div>
 		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				//画像ポップアップ
+				window.showSampleImage = function(event, imagePath) {
+					event.preventDefault();
+					const popupWidth = screen.availWidth;
+					const popupHeight = screen.availHeight;
+					window.open(imagePath, '画像表示', `width=${popupWidth},height=${popupHeight},top=0,left=0,resizable=yes,scrollbars=yes`);
+				};
+				//共通:Ajaxでテーブル更新
+				function fetchAndReplace(url, method = 'GET', data = null) {
+					const options = {
+						method: method,
+						headers: { 'X-Requested-With': 'XMLHttpRequest' }
+					};
+					if (method === 'POST' || method === 'DELETE') {
+						options.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
+						options.body = data;
+					}
+					fetch(url, options)
+						.then(res => res.text())
+						.then(html => {
+							document.getElementById('productTableContainer').innerHTML = html;
+							//sort hidden inputを更新
+							const urlObj = new URL(url, location.origin);
+							const sortParam = urlObj.searchParams.get('sort');
+							if (sortParam) document.getElementById('sortInput').value = sortParam;
+						})
+						.catch(err => console.error(err));
+				}
+				//hiddenでsortを取得
+				const sortInput = document.createElement('input');
+				sortInput.type = 'hidden';
+				sortInput.name = 'sort';
+				sortInput.id = 'sortInput';
+				sortInput.value = '{{ $sort }}';
+				document.getElementById('searchForm').appendChild(sortInput);
+				//検索フォーム_Ajax
+				const searchForm = document.getElementById('searchForm');
+				searchForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+					const formData = new FormData(searchForm);
+					const keyword = formData.get('keyword')?.trim();
+					const companyId = formData.get('company_id');
+					//条件1:ﾄﾞﾁﾗﾓからの場合は初期画面へリロード
+					if (!keyword && !companyId) {
+						window.location.href = "{{ route('product_list_01') }}";
+						return;
+					}
+					//検索条件ありの場合はAjax検索
+					formData.set('sort', '');//ソートをリセット
+					sortInput.value = '';
+					const params = new URLSearchParams(formData).toString();
+					fetchAndReplace("{{ route('product_list_01') }}?" + params);
+				});
+				//削除ボタン_Ajax
+				document.getElementById('productTableBody').addEventListener('click', function(e) {
+					if (!e.target.classList.contains('delete_btn')) return;
+					const id = e.target.dataset.id;
+					if (!confirm('本当に削除しますか？')) return;
+					fetch(`/product/${id}/delete`, {
+						method: 'DELETE',
+						headers: {
+							'X-CSRF-TOKEN': '{{ csrf_token() }}',
+							'X-Requested-With': 'XMLHttpRequest'
+						}
+					})
+					.then(res => res.json())
+					.then(data => {
+						if (data.status === 'success') {
+							e.target.closest('tr').remove();
+							alert(data.message);
+						} else {
+							alert(data.message || '削除に失敗しました');
+						}
+					})
+					.catch(err => {
+						console.error(err);
+						alert('削除中にエラーが発生しました');
+					});
+				});
+				//ページネーション・ソートリンク_Ajax
+				document.querySelector('.table').addEventListener('click', function(e){
+					let link = e.target;
+					while (link && link.tagName !== 'A') {
+						link = link.parentElement;
+					}
+					if (!link) return;
+					e.preventDefault();
+					fetchAndReplace(link.href);
+				});
+			});
+		</script>
 	</body>
 </html>

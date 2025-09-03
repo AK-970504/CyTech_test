@@ -52,7 +52,7 @@ class SalesController extends Controller {
 			$product = Product::find($request->product_id);
 			//02_在庫チェック
 			if ($product->stock <= 0) {
-				throw new \Exception('この商品は在庫切れです'. 423);
+				throw new \Exception('この商品は在庫切れです', 423);
 			}
 			if ($product->stock < $request->quantity) {
 				throw new \Exception('在庫が不足しています', 422);
@@ -60,6 +60,7 @@ class SalesController extends Controller {
 			//03_salesテーブルに購入情報を追加
 			$sale= new Sale();
 			$sale->product_id = $product->id;
+			$sale->quantity = $request->quantity;
 			$sale->save();
 			//04_在庫を減算
 			$product->stock -= $request->quantity;
