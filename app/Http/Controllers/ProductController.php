@@ -12,17 +12,40 @@ class ProductController extends Controller {
 	//[http://localhost:301/product_list]にリダイレクト
 	public function product_list_01(Request $request) {
 		//ルーティングされているかLogで確認
-		Log::debug('00006が呼び出されました');
+		Log::debug('product_list_01 が呼び出されました');
 		//商品一覧を取るときに、その商品の会社情報も一緒にまとめて取得する
 		$query = Product::with('company');
 		//キーワード検索(商品名)
 		if ($request->filled('keyword')) {
 			$keyword = $request->input('keyword');
-			$query->where(function ($q) use ($keyword) {
-				$q->where('product_name', 'like', '%' . $keyword . '%')
-				  ->orWhere('price', 'like', '%' . $keyword . '%')
-				  ->orWhere('stock', 'like', '%' . $keyword . '%');
-			});
+			//価格範囲検索
+			if (preg_match('/^価格\((\d+)～(\d+)\)$/u', $request->keyword, $matches)) {
+				$priceMin = (int)$matches[1];
+				$priceMax = (int)$matches[2];
+				$query->whereBetween('price', [$priceMin, $priceMax]);
+			//在庫数範囲検索
+			} elseif (preg_match('/^在庫数\((\d+)～(\d+)\)$/u', $request->keyword, $matches)) {
+				$stockMin = (int)$matches[1];
+				$stockMax = (int)$matches[2];
+				$query->whereBetween('stock', [$stockMin, $stockMax]);
+				//通常キーワード検索
+			} else {
+				$query->where(function ($q) use ($keyword) {
+					if (is_numeric($keyword)) {
+						$q->orWhere('id', $keyword); // ID検索は完全一致
+					}
+					$q->orWhere('product_name', 'like', "%{$keyword}%")
+					  ->orWhere('price', 'like', "%{$keyword}%")
+					  ->orWhere('stock', 'like', "%{$keyword}%")
+					  ->orWhereHas('company', function ($q2) use ($keyword) {
+						$q2->where('company_name', 'like', "%{$keyword}%");
+       				});
+				});
+			}
+		}
+		//メーカー検索(keywordが空でもcompany_idで検索可能)
+		if ($request->filled('company_id')) {
+			$query->where('company_id', $request->company_id);
 		}
 		//⬆⬇ソート機能
 		$sort = $request->input('sort', null);
@@ -58,14 +81,15 @@ class ProductController extends Controller {
 		}
 		//メーカー一覧取得
 		$companies = company::all();
+		//Ajaxリクエストなら部分ビューだけ返す
 		if ($request->ajax()) {
 			return view('03-99_product_list_items', [
 				'products' => $products,
 				'sort' => $sort,
 			]);
-		} else {
-			return view('03_product_list', compact('products', 'companies', 'request', 'sort'));
 		}
+		//通常リクエストはフルビュー 
+		return view('03_product_list', compact('products', 'companies', 'request', 'sort'));
 	}
 
 	//[http://localhost:301/product_new_registration]にアクセスした場合

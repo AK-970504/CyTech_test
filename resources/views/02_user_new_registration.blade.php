@@ -117,7 +117,7 @@
 					<button class="new_btn" type="submit">
 						新規登録
 					</button>
-					<button class="login_btn" type="button" onclick="location.href='{{ route('user_login_02') }}'">
+					<button class="login_btn" type="button" onclick="location.href='{{ route('login') }}'">
 						戻る
 					</button>
 				</div>

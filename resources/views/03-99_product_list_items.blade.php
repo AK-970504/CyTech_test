@@ -82,7 +82,7 @@
 							<form class="delete" method="POST" action="{{ route('product_delete', ['id' => $product->id]) }}">
 								@csrf
 								@method('DELETE')
-								<button class="delete_btn" data-id="{{ $product->id }}">
+								<button class="delete_btn" type="submit" data-id="{{ $product->id }}">
 									削除
 								</button>
 							</form>

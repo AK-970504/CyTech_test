@@ -177,11 +177,11 @@
 				<form id="searchForm">
 					<input type="text" name="keyword" autocomplete="off" placeholder="検索キーワード" value="<?php echo e($request->keyword ?? ''); ?>">
 					<select name="company_id">
-						<option id="maker_select" value="" disabled hidden <?php echo e(old('company_id') === null ? 'selected' : ''); ?>>
+						<option id="maker_select" value="" hidden <?php echo e(empty($request->company_id) ? 'selected' : ''); ?>>
 							メーカー名
 						</option>
 						<?php $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<option value="<?php echo e($company->id); ?>" <?php echo e(old('company_id') == $company->id ? 'selected' : ''); ?>>
+							<option value="<?php echo e($company->id); ?>" <?php echo e($request->company_id == $company->id ? 'selected' : ''); ?>>
 								<?php echo e($company->company_name); ?>
 
 							</option>
@@ -254,9 +254,15 @@
 					const formData = new FormData(searchForm);
 					const keyword = formData.get('keyword')?.trim();
 					const companyId = formData.get('company_id');
-					//条件1:ﾄﾞﾁﾗﾓからの場合は初期画面へリロード
-					if (!keyword && !companyId) {
-						window.location.href = "<?php echo e(route('product_list_01')); ?>";
+					const priceMin = formData.get('price_min');
+					const priceMax = formData.get('price_max');
+					const stockMin = formData.get('stock_min');
+					const stockMax = formData.get('stock_max');
+					//条件: キーワードもメーカーも空 → リロード
+					if (!keyword && !companyId && !priceMin && !priceMax && !stockMin && !stockMax) {
+						formData.set('sort', '');//ソートをリセット
+						sortInput.value = '';
+						fetchAndReplace("<?php echo e(route('product_list_01')); ?>");
 						return;
 					}
 					//検索条件ありの場合はAjax検索
@@ -268,6 +274,7 @@
 				//削除ボタン_Ajax
 				document.getElementById('productTableBody').addEventListener('click', function(e) {
 					if (!e.target.classList.contains('delete_btn')) return;
+					e.preventDefault();
 					const id = e.target.dataset.id;
 					if (!confirm('本当に削除しますか？')) return;
 					fetch(`/product/${id}/delete`, {
@@ -282,6 +289,9 @@
 						if (data.status === 'success') {
 							e.target.closest('tr').remove();
 							alert(data.message);
+							if (document.querySelectorAll('#productTableBody tr').length === 0) {
+								document.getElementById('productTableBody').innerHTML = '<tr><td colspan="7">データがありません</td></tr>';
+							}
 						} else {
 							alert(data.message || '削除に失敗しました');
 						}
