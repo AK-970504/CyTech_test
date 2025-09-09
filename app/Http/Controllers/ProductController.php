@@ -83,13 +83,13 @@ class ProductController extends Controller {
 		$companies = company::all();
 		//Ajaxリクエストなら部分ビューだけ返す
 		if ($request->ajax()) {
-			return view('03-99_product_list_items', [
+			return view('product_list_items', [
 				'products' => $products,
 				'sort' => $sort,
 			]);
 		}
 		//通常リクエストはフルビュー 
-		return view('03_product_list', compact('products', 'companies', 'request', 'sort'));
+		return view('product_list', compact('products', 'companies', 'request', 'sort'));
 	}
 
 	//[http://localhost:301/product_new_registration]にアクセスした場合
@@ -97,7 +97,7 @@ class ProductController extends Controller {
 		Log::debug('00007が呼び出されました');
 		$companies = Company::all();
 		//[http://localhost:301/user_login]にアクセス
-		return view('04_product_new_registration', compact('companies'));
+		return view('product_new_registration', compact('companies'));
 	}
 
 	public function product_new_registration_02(Request $request) {
@@ -229,7 +229,7 @@ class ProductController extends Controller {
 			return redirect('/user_login');
 		}
 		$product = Product::with('company')->findOrFail($id);
-		return view('05_product_detail', compact('product'));	
+		return view('product_detail', compact('product'));	
 	}
 
 	public function product_edit_01($id = null) {
@@ -242,7 +242,7 @@ class ProductController extends Controller {
 		}
 		$product = Product::with('company')->findOrFail($id);
 		$companies = Company::all();
-		return view('06_product_edit', compact('product', 'companies'));	
+		return view('product_edit', compact('product', 'companies'));	
 	}
 
 	public function product_edit_02(Request $request, $id) {

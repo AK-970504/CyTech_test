@@ -192,7 +192,7 @@
 				</form>
 			</div>
 			<div class="table" id="productTableContainer">
-				 @include('03-99_product_list_items', ['products' => $products])
+				 @include('product_list_items', ['products' => $products])
 			</div>
 			<div class="pagination">
 				<button>
