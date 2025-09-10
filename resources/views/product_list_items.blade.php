@@ -7,7 +7,7 @@
 				$stockSort = $sort === 'stock_asc' ? 'stock_desc' : 'stock_asc';
 			@endphp
 			<th class="title_id">
-				<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => $idSort])) }}">
+				<a href="{{ route('show.product.list', array_merge(request()->query(), ['sort' => $idSort])) }}">
 					ID
 					@if($sort === 'id_asc') ▲
 					@elseif($sort === 'id_desc') ▼
@@ -21,7 +21,7 @@
 				商品名
 			</th>
 			<th class="title_price">
-				<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => $priceSort])) }}">
+				<a href="{{ route('show.product.list', array_merge(request()->query(), ['sort' => $priceSort])) }}">
 					価格
 					@if($sort === 'price_asc') ▲
 					@elseif($sort === 'price_desc') ▼
@@ -29,7 +29,7 @@
 				</a>
 			</th>
 			<th class="title_stock">
-				<a href="{{ route('product_list_01', array_merge(request()->query(), ['sort' => $stockSort])) }}">
+				<a href="{{ route('show.product.list', array_merge(request()->query(), ['sort' => $stockSort])) }}">
 					在庫数
 					@if($sort === 'stock_asc') ▲
 					@elseif($sort === 'stock_desc') ▼
@@ -40,7 +40,7 @@
 				メーカー名
 			</th>
 			<th class="title_create">
-				<button class="create_btn" onclick="location.href='{{ route('product_new_registration_01') }}'">
+				<button class="create_btn" onclick="location.href='{{ route('show.new.product.page') }}'">
 					新規作成
 				</button>
 			</th>
@@ -76,10 +76,10 @@
 					</td>
 					<td>
 						@if($product)
-							<button class="detal_btn" onclick="location.href='{{ route('product_detail_01', ['id' => $product->id]) }}'">
+							<button class="detal_btn" onclick="location.href='{{ route('show.product.detail', ['id' => $product->id]) }}'">
 								 詳細
 							</button>
-							<form class="delete" method="POST" action="{{ route('product_delete', ['id' => $product->id]) }}">
+							<form class="delete" method="POST" action="{{ route('delete.product', ['id' => $product->id]) }}">
 								@csrf
 								@method('DELETE')
 								<button class="delete_btn" type="submit" data-id="{{ $product->id }}">

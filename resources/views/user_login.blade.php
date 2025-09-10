@@ -117,14 +117,14 @@
 					</ul>
 				</div>
 			@endif
-			<form method="post" action="{{ route('user_login_03') }}">
+			<form method="post" action="{{ route('login.user') }}">
 				@csrf
 				<div class="input_text">
 					<input type="password" name="password" placeholder="パスワード">
 					<input type="email" name="email" placeholder="メールアドレス" autocomplete="new_email" />
 				</div>
 				<div class="input_btn">
-					<button class="new_btn" type="button" onclick="location.href='{{ route('user_new_registration_01') }}'">
+					<button class="new_btn" type="button" onclick="location.href='{{ route('show.registration.page') }}'">
 						新規登録
 					</button>
 					<button class="login_btn" type="submit">

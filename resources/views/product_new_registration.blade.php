@@ -232,7 +232,7 @@
 					{{ session('success')}}
 				</div>
 			@endif
-			<form class="input" method="POST" action="{{ route('product_new_registration_02') }}" enctype="multipart/form-data">
+			<form class="input" method="POST" action="{{ route('register.product') }}" enctype="multipart/form-data">
 				@csrf
 				<div class="product">
 					<label class="product_item">
@@ -352,7 +352,7 @@
 					<button class="new_btn" type="submit">
 						新規登録
 					</button>
-					<button class="return_btn" type="button" onclick="location.href='{{ route('product_list_01') }}'">
+					<button class="return_btn" type="button" onclick="location.href='{{ route('show.product.list') }}'">
 						戻る
 					</button>
 				</div>

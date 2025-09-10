@@ -237,7 +237,7 @@
 					{{ session('success')}}
 				</div>
 			@endif
-			<form class="input" method="POST" action="{{ route('product_edit_02', ['id' => $product->id]) }}" enctype="multipart/form-data">
+			<form class="input" method="POST" action="{{ route('update.product', ['id' => $product->id]) }}" enctype="multipart/form-data">
 				@csrf
 				<div class="id">
 					<label class="id_item">
@@ -365,7 +365,7 @@
 					<button class="update_btn" type="submit">
 						更新
 					</button>
-					<button class="return_btn" type="button" onclick="location.href='{{ route('product_detail_01', ['id' => $product->id]) }}'">
+					<button class="return_btn" type="button" onclick="location.href='{{ route('show.product.detail', ['id' => $product->id]) }}'">
 						戻る
 					</button>
 				</div>

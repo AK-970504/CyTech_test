@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller {
 	//最新の購入情報を取得
-	public function sales_01() {
+	public function showSales() {
 		try {
 			$sale = Sale::latest()->first();
 			if (!$sale) {
@@ -41,7 +41,7 @@ class SalesController extends Controller {
 	}
 
 	//商品購入処理
-	public function sales_02(Request $request) {
+	public function purchaseSales(Request $request) {
 		$request->validate([
 			'product_id' => 'required|integer|exists:products,id',
 			'quantity' => 'required|integer|min:1'

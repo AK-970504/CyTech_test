@@ -11,34 +11,34 @@ use Illuminate\Support\Facades\Log;
 class UserController extends Controller {
 
 	//[http://localhost:301/]にアクセスした場合
-	public function user_login_01() {
+	public function showLoginPage() {
 		//ルーティングされているかLogで確認
-		Log::debug('00001が呼び出されました');
+		Log::debug('ユーザーログイン画面の表示実行');
 		Log::debug('Auth check: ' . (Auth::check() ? 'true' : 'false'));
 		//[http://localhost:301/user_login]にアクセス
-		return view('01_user_login');
+		return view('user_login');
 	}
 
 	//[http://localhost:301/user_login]にアクセスした場合
-	public function user_login_02() {
+	public function showLoginPageAlt() {
 		//ルーティングされているかLogで確認
-		Log::debug('00002が呼び出されました');
+		Log::debug('ユーザーログイン画面の表示実行');
 		//[http://localhost:301/user_login]にアクセス
-		return view('01_user_login');
+		return view('user_login');
 	}
 	
 	//[http://localhost:301/user_new_registration]にアクセスした場合
-	public function user_new_registration_01() {
+	public function showRegistrationPage() {
 		//ルーティングされているかLogで確認
-		Log::debug('00003が呼び出されました');
+		Log::debug('ユーザー新規登録画面の表示実行');
 		////[http://localhost:301/user_new_registration]にアクセス
-		return view('02_user_new_registration');
+		return view('user_new_registration');
 	}
 
 	//新規登録画面でフォームに入力して送信した場合
-	public function user_new_registration_02(Request $request) {
+	public function registerUse(Request $request) {
 		//ルーティングされているかLogで確認
-		Log::debug('00004が呼び出されました');
+		Log::debug('ユーザー新規登録画面の新規登録処理実行');
 		//フォームから送られてきた値をチェックしてOKなら以下の値を取得する
 		//ルールに違反していれば自動的にリダイレクトしてエラー表示
 		$validated = $request->validate ([
@@ -76,9 +76,9 @@ class UserController extends Controller {
 	}
 
 	//ログイン画面でフォームに入力して送信した場合
-	public function user_login_03(Request $request) {
+	public function loginUser(Request $request) {
 		//ルーティングされているかLogで確認
-		Log::debug('00005が呼び出されました');
+		Log::debug('ユーザーログイン画面のログイン処理実行');
 		//フォームから送られてきた値をチェックしてOKなら以下の値を取得する
 		//ルールに違反していれば自動的にリダイレクトしてエラー表示
 		$credentials = $request->validate([
@@ -99,7 +99,7 @@ class UserController extends Controller {
 			//存在する場合はログイン後にセッションIDの再生成
 			$request->session()->regenerate();
 			//次に[http://localhost:301/product_list]にリダイレクト
-			return redirect()->route('product_list_01');
+			return redirect()->route('show.product.list');
 		} else {
 			//Logにログイン失敗を表示
 			Log::debug('ログインに失敗しました');

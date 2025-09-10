@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['api'])->group(function() {
 	
-	Route::get('/sales',[SalesController::class, 'sales_01'])->name('sales_01');
+	Route::get('/sales',[SalesController::class, 'show.Sales'])->name('show.sales');
 
-	Route::post('/sales',[SalesController::class, 'sales_02'])->name('sales_02');
+	Route::post('/sales',[SalesController::class, 'purchaseSales'])->name('purchase.sales');
 
 });

@@ -209,10 +209,10 @@
 					</div>
 				</div>
 				<div class="input_btn">
-					<button class="edit_btn" type="button" onclick="location.href='{{ route('product_edit_01', ['id' => $product->id]) }}'">
+					<button class="edit_btn" type="button" onclick="location.href='{{ route('show.edit.page', ['id' => $product->id]) }}'">
 						編集
 					</button>
-					<button class="return_btn" type="button" onclick="location.href='{{ route('product_list_01') }}'">
+					<button class="return_btn" type="button" onclick="location.href='{{ route('show.product.list') }}'">
 						戻る
 					</button>
 				</div>

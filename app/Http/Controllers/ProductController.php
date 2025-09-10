@@ -10,9 +10,9 @@ use App\Models\Company;
 
 class ProductController extends Controller {
 	//[http://localhost:301/product_list]にリダイレクト
-	public function product_list_01(Request $request) {
+	public function showProductList(Request $request) {
 		//ルーティングされているかLogで確認
-		Log::debug('product_list_01 が呼び出されました');
+		Log::debug('商品一覧画面の表示実行');
 		//商品一覧を取るときに、その商品の会社情報も一緒にまとめて取得する
 		$query = Product::with('company');
 		//キーワード検索(商品名)
@@ -93,16 +93,16 @@ class ProductController extends Controller {
 	}
 
 	//[http://localhost:301/product_new_registration]にアクセスした場合
-	public function product_new_registration_01() {
-		Log::debug('00007が呼び出されました');
+	public function showNewProductPage() {
+		Log::debug('商品新規登録画面の表示実行');
 		$companies = Company::all();
 		//[http://localhost:301/user_login]にアクセス
 		return view('product_new_registration', compact('companies'));
 	}
 
-	public function product_new_registration_02(Request $request) {
+	public function registerProduct(Request $request) {
 		//ルーティングされているかLogで確認
-		Log::debug('00008が呼び出されました');
+		Log::debug('商品新規登録画面の新規登録処理実行');
 		//フォームから送られてきた値をチェックしてOKなら以下の値を取得する
 		//ルールに違反していれば自動的にリダイレクトしてエラー表示
 		$validated = $request->validate([
@@ -196,7 +196,7 @@ class ProductController extends Controller {
 		return redirect('product_new_registration')->with('success', '商品登録が完了しました。');
 	}
 
-	public function product_delete($id, Request $request) {
+	public function deleteProduct($id, Request $request) {
 		try {
 			Log::debug('00009:削除処理開始 - ID: $id');
 			$product = Product::findOrFail($id);
@@ -207,7 +207,7 @@ class ProductController extends Controller {
 					'message' => '商品を削除しました',
 				]);
 			}
-			return redirect()->route('product_list_01')->with('success', '商品を削除しました');
+			return redirect()->route('show.product.list')->with('success', '商品を削除しました');
 		} catch (\Exception $e) {
 			Log::error('商品削除失敗: ' . $e->getMessage());
 			if ($request->ajax()) {
@@ -220,24 +220,24 @@ class ProductController extends Controller {
 		}
 	}
 
-	public function product_detail_01($id = null) {
-		Log::debug("product_detail 呼び出し - ID: $id");
+	public function showProductDetail($id = null) {
+		Log::debug("商品詳細画面の表示実行 呼び出し - ID: $id");
 
 		// IDがない場合はログインページにリダイレクト
 		if (is_null($id)) {
-			Log::warning("product_detail: IDが指定されていません。ログインページにリダイレクトします。");
+			Log::warning("商品詳細画面の表示実行: IDが指定されていません。ログインページにリダイレクトします。");
 			return redirect('/user_login');
 		}
 		$product = Product::with('company')->findOrFail($id);
 		return view('product_detail', compact('product'));	
 	}
 
-	public function product_edit_01($id = null) {
-		Log::debug("product_edit 呼び出し - ID: $id");
+	public function showEditPage($id = null) {
+		Log::debug("商品編集画面の表示実行 呼び出し - ID: $id");
 
 		// IDがない場合はログインページにリダイレクト
 		if (is_null($id)) {
-			Log::warning("product_edit: IDが指定されていません。ログインページにリダイレクトします。");
+			Log::warning("商品編集画面の表示実行: IDが指定されていません。ログインページにリダイレクトします。");
 			return redirect('/user_login');
 		}
 		$product = Product::with('company')->findOrFail($id);
@@ -245,8 +245,8 @@ class ProductController extends Controller {
 		return view('product_edit', compact('product', 'companies'));	
 	}
 
-	public function product_edit_02(Request $request, $id) {
-		Log::debug('00013: 商品更新処理開始 - ID:'. $id);
+	public function updateProduct(Request $request, $id) {
+		Log::debug('商品更新処理開始 - ID:'. $id);
 		$validated = $request->validate([
 			'product_name' => 'required',
 			'company_id' => 'required',
@@ -291,7 +291,7 @@ class ProductController extends Controller {
 		$product->save();
 		// 商品情報を更新
 		$product->update($validated);
-		return redirect()->route('product_edit_01', ['id' => $product->id])->with('success', '商品情報を更新しました');
+		return redirect()->route('show.edit.page', ['id' => $product->id])->with('success', '商品情報を更新しました');
 	}
 	
 }

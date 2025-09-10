@@ -261,14 +261,14 @@
 					if (!keyword && !companyId && !priceMin && !priceMax && !stockMin && !stockMax) {
 						formData.set('sort', '');//ソートをリセット
 						sortInput.value = '';
-						fetchAndReplace("{{ route('product_list_01') }}");
+						fetchAndReplace("{{ route('show.product.list') }}");
 						return;
 					}
 					//検索条件ありの場合はAjax検索
 					formData.set('sort', '');//ソートをリセット
 					sortInput.value = '';
 					const params = new URLSearchParams(formData).toString();
-					fetchAndReplace("{{ route('product_list_01') }}?" + params);
+					fetchAndReplace("{{ route('show.product.list') }}?" + params);
 				});
 				//削除ボタン_Ajax
 				document.getElementById('productTableBody').addEventListener('click', function(e) {
